@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "460539331346",
+    "project_id": "biblioteca-70e70",
+    "storage_bucket": "biblioteca-70e70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460539331346:android:bfb2411011298a0e41e9cb",
+        "android_client_info": {
+          "package_name": "it.uninsubria.biblioteca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460539331346-rjihgpt2loqfvj5vmc8dcsn5nh1m3kko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Tte4hx2Iqh7SD-8ulwpiRMSH1Wz_M2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460539331346-rjihgpt2loqfvj5vmc8dcsn5nh1m3kko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460539331346:android:8d50ea16521bf14841e9cb",
+        "android_client_info": {
+          "package_name": "it.uninsubria.biblioteca_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460539331346-rjihgpt2loqfvj5vmc8dcsn5nh1m3kko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Tte4hx2Iqh7SD-8ulwpiRMSH1Wz_M2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460539331346-rjihgpt2loqfvj5vmc8dcsn5nh1m3kko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460539331346:android:e7c3e2be228a234241e9cb",
+        "android_client_info": {
+          "package_name": "it.uninsubria.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460539331346-rjihgpt2loqfvj5vmc8dcsn5nh1m3kko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Tte4hx2Iqh7SD-8ulwpiRMSH1Wz_M2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460539331346-rjihgpt2loqfvj5vmc8dcsn5nh1m3kko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
