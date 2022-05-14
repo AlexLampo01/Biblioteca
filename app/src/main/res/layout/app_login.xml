@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Pagina_Login">
+    tools:context=".Pagina_Login"
+    android:background="@drawable/prova_sfondo">>
 
     <TextView
         android:layout_width="wrap_content"
