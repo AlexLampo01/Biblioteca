@@ -5,15 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Pagina_Login"
-    android:background="@drawable/prova_sfondo">>
+    android:background="@drawable/prova_sfondo">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <Button
+        android:id="@+id/Registrati"
+        android:layout_width="145dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="92dp"
+        android:text="Registrati"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/Accedi"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/Accedi"
+        android:layout_width="123dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="92dp"
+        android:text="Accedi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
