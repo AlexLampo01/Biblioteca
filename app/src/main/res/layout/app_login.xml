@@ -38,23 +38,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/EmailTil"
-        android:layout_width="414dp"
-        android:layout_height="46dp"
-        android:layout_above="@+id/passwordTil"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="240dp">
-        <EditText
-            android:id="@+id/emailEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Inserisci Email"
-            android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="240dp" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailTil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:passwordToggleEnabled="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="312dp">
+
+
+    <EditText
+        android:id="@+id/emailEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Inserisci Email"
+        android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordTil"
         android:layout_width="match_parent"
@@ -62,20 +64,16 @@
         android:layout_centerInParent="true"
         app:passwordToggleEnabled="true"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="331dp">
+        tools:layout_editor_absoluteY="312dp">
 
+        <EditText
+            android:id="@+id/passwordEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Inserisci Password"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <EditText
-        android:id="@+id/passwordEt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Inserisci Password"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="331dp" />
-
-
 
 
 
