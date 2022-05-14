@@ -7,27 +7,34 @@
     tools:context=".Pagina_Login"
     android:background="@drawable/prova_sfondo">
 
-    <Button
-        android:id="@+id/Registrati"
-        android:layout_width="145dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="92dp"
-        android:text="Registrati"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Accedi"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/Accedi"
-        android:layout_width="123dp"
-        android:layout_height="62dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="92dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="200dp"
         android:text="Accedi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTil"
+        app:layout_constraintVertical_bias="0.578"
         tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/Registrati"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+        android:text="@string/Non_account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/TextAppearance.MaterialComponents.Caption"/>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -43,39 +50,39 @@
         android:id="@+id/emailTil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:passwordToggleEnabled="true"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="312dp">
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:layout_editor_absoluteX="0dp">
+
+        <EditText
+            android:id="@+id/emailEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:hint="Inserisci Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:layout_editor_absoluteX="0dp" />
 
 
-    <EditText
-        android:id="@+id/emailEt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Inserisci Email"
-        android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordTil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/emailTil"
         app:passwordToggleEnabled="true"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="312dp">
+        tools:layout_editor_absoluteX="0dp">
 
         <EditText
             android:id="@+id/passwordEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:hint="Inserisci Password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
