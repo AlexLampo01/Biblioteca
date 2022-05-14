@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Biblioteca_App</string>
-    <string name="Non_account">Non hai un account? Registrati Ora!</string>
+    <string name="Non_account">Non hai un account? <b> Registrati Ora!</b></string> <!-- Messa grassetto-->
 </resources>
