@@ -7,5 +7,60 @@
     android:padding="20dp"
     tools:context=".Pagina_Registrazione"
     android:background="@drawable/prova_sfondo">
+    <Button
+        android:id="@+id/Registrati"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrati"
+        android:layout_below="@+id/passwordTil"
+        android:layout_marginTop="10dp"/>
 
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailTil"
+        android:layout_above="@+id/passwordTil"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        >
+
+        <EditText
+            android:id="@+id/emailEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci Email"
+            android:inputType="textEmailAddress"
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTil"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        >
+
+        <EditText
+            android:id="@+id/passwordEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci Password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 </RelativeLayout>
