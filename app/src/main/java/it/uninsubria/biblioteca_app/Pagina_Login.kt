@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import android.app.ProgressDialog
+import android.content.Intent
 import com.google.firebase.auth.FirebaseAuth
 import it.uninsubria.biblioteca_app.databinding.AppLoginBinding
 
@@ -39,9 +40,22 @@ class Pagina_Login : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
+        //Apertura pagina registrazione
+        binding.Registrati.setOnClickListener {
+            startActivity(Intent(this,Pagina_Registrazione::class.java))
+        }
+
     }
 
     private fun checkUser() {
-        TODO("Not yet implemented")
+        //Se l'utente ha già effettuato l'accesso, vai all'attività del profilo
+        //Prendi l'utente corrente
+        val firebaseUser = firebaseAuth.currentUser
+        if(firebaseUser != null){
+            //Utente collegato.
+            startActivity(Intent(this,HomePage::class.java))
+            finish()
+
+        }
     }
 }
