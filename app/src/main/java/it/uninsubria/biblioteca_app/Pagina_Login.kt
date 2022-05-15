@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.PatternMatcher
 import android.text.TextUtils
 import android.util.Patterns
@@ -35,6 +36,7 @@ class Pagina_Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = AppLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         //Configure ActionBar
         actionBar = supportActionBar!!
