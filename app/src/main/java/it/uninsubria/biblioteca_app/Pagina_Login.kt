@@ -1,13 +1,16 @@
 package it.uninsubria.biblioteca_app
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.PatternMatcher
 import android.text.TextUtils
 import android.util.Patterns
+import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import it.uninsubria.biblioteca_app.databinding.AppLoginBinding
@@ -57,7 +60,39 @@ class Pagina_Login : AppCompatActivity() {
             //Prima del login
             validateData()
         }
+        //Recupero password
+        binding.RecuperoPassword.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Inserisci l'Email che vuoi effettuare il reset")
+            val view = layoutInflater.inflate(R.layout.finestra_dialogo_recupero_password, null)
+            val email_recupero = view.findViewById<EditText>(R.id.et_email)
+            builder.setView(view)
+            builder.setPositiveButton("Reset", DialogInterface.OnClickListener { _ , _ ->
+                forgotPassword(email_recupero)
+            })
+            builder.setNegativeButton("Close",DialogInterface.OnClickListener { _, _ ->  })
+            builder.show()
+        }
 
+    }
+
+    private fun forgotPassword(email_recupero: EditText) {
+        if(email_recupero.text.toString().isEmpty()){
+            //Inserire l'email
+                Toast.makeText(this,"Inserire l'Email",Toast.LENGTH_SHORT).show()
+                return
+            }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email_recupero.text.toString()).matches()){
+                Toast.makeText(this,"Formato email non valido!",Toast.LENGTH_SHORT).show()
+                return
+        }
+        firebaseAuth.sendPasswordResetEmail(email_recupero.text.toString())
+            .addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    Toast.makeText(this, "Email inviata!",Toast.LENGTH_SHORT).show()
+                }
+
+            }
 
     }
 
