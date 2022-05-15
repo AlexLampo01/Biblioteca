@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Biblioteca_App</string>
-    <string name="Non_account">Non hai un account? <b> Registrati Ora!</b></string> <!-- Messa grassetto-->
+    <string name="Non_account">Non hai un account? <b> Registrati Ora!</b></string>
+    <string name="password_dimenticata">Password dimenticata? <b> Reimpostala Ora!</b></string> <!-- Messa grassetto-->
 </resources>

@@ -26,6 +26,16 @@
         android:layout_centerHorizontal="true"
         style="@style/TextAppearance.MaterialComponents.Caption"/>
 
+    <TextView
+        android:id="@+id/RecuperoPassword"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Accedi"
+        android:layout_centerHorizontal="true"
+        android:text="@string/password_dimenticata"
+        android:textColor="@color/black" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
