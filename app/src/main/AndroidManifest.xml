@@ -12,7 +12,8 @@
         android:theme="@style/Theme.Biblioteca_App">
         <activity android:name=".HomePage"></activity>
         <activity android:name=".Pagina_Registrazione"/>
-        <activity android:name=".Pagina_Login">
+        <activity android:name=".Pagina_Login"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
