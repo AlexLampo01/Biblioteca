@@ -25,7 +25,7 @@ class HomePage : AppCompatActivity() {
 
         //Configurazione ActionBar
         actionBar = supportActionBar!!
-        actionBar.title = "Profilo"
+        actionBar.title = "HomePage"
 
         //Configurazione Firebaseauth
         firebaseAuth = FirebaseAuth.getInstance()
@@ -46,7 +46,7 @@ class HomePage : AppCompatActivity() {
             //Utente collegato
             val email = firebaseUser.email
             //set to text view
-            binding.emailTv.text = email
+            binding.emailTv.text = "Ciao ${email}"
 
         }else{
             //Utente non collegato
