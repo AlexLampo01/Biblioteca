@@ -3,6 +3,7 @@ package it.uninsubria.biblioteca_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
 import it.uninsubria.biblioteca_app.databinding.ActivityHomePageBinding
@@ -35,6 +36,26 @@ class HomePage : AppCompatActivity() {
         binding.Esci.setOnClickListener {
             firebaseAuth.signOut()
             checkUser()
+        }
+
+        //Azione con Film
+        binding.film.setOnClickListener {
+            Toast.makeText(this,"Hai selezionato Film",Toast.LENGTH_SHORT).show()
+        }
+
+        //Azione con Libri
+        binding.libri.setOnClickListener {
+            Toast.makeText(this,"Hai selezionato Libri",Toast.LENGTH_SHORT).show()
+        }
+
+        //Azione Musica
+        binding.musica.setOnClickListener {
+            Toast.makeText(this,"Hai selezionato Musica",Toast.LENGTH_SHORT).show()
+        }
+
+        //Azione Percorso Lettura
+        binding.percorsoLettura.setOnClickListener {
+            Toast.makeText(this,"Hai selezionato percorso di lettura",Toast.LENGTH_SHORT).show()
         }
 
     }
