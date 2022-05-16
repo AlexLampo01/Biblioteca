@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import it.uninsubria.biblioteca_app.databinding.ActivityHomePageBinding
 import it.uninsubria.biblioteca_app.databinding.AppLoginBinding
 
@@ -18,6 +22,11 @@ class HomePage : AppCompatActivity() {
 
     //FireBaseAuth
     private lateinit var firebaseAuth: FirebaseAuth
+
+    //RealTime Database Firebase
+    private lateinit var database: FirebaseDatabase
+    private lateinit var myRef:DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +41,10 @@ class HomePage : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
+        //Configurazione Firebase RealTime Database Film
+        database= FirebaseDatabase.getInstance()
+        myRef=database.getReference("Film")
+
         //Pulsante di uscita
         binding.Esci.setOnClickListener {
             firebaseAuth.signOut()
@@ -40,6 +53,7 @@ class HomePage : AppCompatActivity() {
 
         //Azione con Film
         binding.film.setOnClickListener {
+            visualizzaFilm()
             Toast.makeText(this,"Hai selezionato Film",Toast.LENGTH_SHORT).show()
         }
 
@@ -57,6 +71,10 @@ class HomePage : AppCompatActivity() {
         binding.percorsoLettura.setOnClickListener {
             Toast.makeText(this,"Hai selezionato percorso di lettura",Toast.LENGTH_SHORT).show()
         }
+
+    }
+
+    private fun visualizzaFilm() {
 
     }
 

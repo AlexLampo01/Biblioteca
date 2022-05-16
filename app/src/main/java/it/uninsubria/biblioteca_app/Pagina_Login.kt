@@ -123,25 +123,36 @@ class Pagina_Login : AppCompatActivity() {
     private fun firebaseLogin() {
         //Mostra progress
         processDialog.show()
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnSuccessListener{
-                //Login Effettuato
-                processDialog.dismiss()
-                //Prendi Utente
-                val firebaseUser = firebaseAuth.currentUser
-                val email = firebaseUser!!.email
-                Toast.makeText(this, "Login da $email", Toast.LENGTH_SHORT).show()
+        //Login con admin
+        if ((email.equals("Admin@gmail.com")) && (password.equals("Admin"))) {
+            startActivity(Intent(this, Pagina_Admin::class.java))
+            finish()
+        } else {
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
 
-                //Apre la Homepage
-                startActivity(Intent(this,HomePage::class.java))
-                finish()
-            }
-            .addOnFailureListener { e->
-                //Login Saltato
-                processDialog.dismiss()
-                Toast.makeText(this, "login Fallito per causa di ${e.message}", Toast.LENGTH_SHORT).show()
-            }
+                    //Login Effettuato
+                    processDialog.dismiss()
+                    //Prendi Utente
+                    val firebaseUser = firebaseAuth.currentUser
+                    val email = firebaseUser!!.email
+                    Toast.makeText(this, "Login da $email", Toast.LENGTH_SHORT).show()
 
+                    //Apre la Homepage
+                    startActivity(Intent(this, HomePage::class.java))
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    //Login Saltato
+                    processDialog.dismiss()
+                    Toast.makeText(
+                        this,
+                        "login Fallito per causa di ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+        }
     }
 
     private fun checkUser() {

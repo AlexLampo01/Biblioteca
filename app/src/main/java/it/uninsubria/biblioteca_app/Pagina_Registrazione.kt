@@ -57,22 +57,23 @@ class Pagina_Registrazione : AppCompatActivity() {
         //Prendi il dato
         email = binding.emailEt.text.toString().trim()
         password = binding.passwordEt.text.toString().trim()
-
-        //Controllo Dati
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            //Invalido input
-            binding.emailEt.error = "Email non corretta"
-        }
-        else if(TextUtils.isEmpty(password)){
-            binding.passwordEt.error = "Inserisci la password!"
-        }
-        else if(password.length <6){
-            binding.passwordEt.error = "La password deve avere almeno 6 caratteri"
+        //Impossibilità di registrare questa email
+        if(email.equals("Admin@gmail.com")){
+            binding.emailEt.error= "Non è possibile effettuare la registrazione con questa email!"
         }
         else {
-            firebaseRegistrazione()
+            //Controllo Dati
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                //Invalido input
+                binding.emailEt.error = "Email non corretta"
+            } else if (TextUtils.isEmpty(password)) {
+                binding.passwordEt.error = "Inserisci la password!"
+            } else if (password.length < 6) {
+                binding.passwordEt.error = "La password deve avere almeno 6 caratteri"
+            } else {
+                firebaseRegistrazione()
+            }
         }
-
     }
 
     private fun firebaseRegistrazione() {
