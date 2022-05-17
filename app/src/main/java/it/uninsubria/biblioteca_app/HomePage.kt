@@ -3,15 +3,19 @@ package it.uninsubria.biblioteca_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import it.uninsubria.biblioteca_app.databinding.ActivityHomePageBinding
-import it.uninsubria.biblioteca_app.databinding.AppLoginBinding
+import it.uninsubria.biblioteca_app.Pagina_Admin
+import java.net.URI
+import android.net.Uri as Uri1
+
 
 class HomePage : AppCompatActivity() {
     //ViewBinding
@@ -45,6 +49,9 @@ class HomePage : AppCompatActivity() {
         database= FirebaseDatabase.getInstance()
         myRef=database.getReference("Film")
 
+
+
+
         //Pulsante di uscita
         binding.Esci.setOnClickListener {
             firebaseAuth.signOut()
@@ -53,17 +60,25 @@ class HomePage : AppCompatActivity() {
 
         //Azione con Film
         binding.film.setOnClickListener {
-            visualizzaFilm()
+            //visualizzaFilm()
+            var intent=Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://movieplayer.it/film/ultime-uscite/"))
+            startActivity(intent)
+
+
             Toast.makeText(this,"Hai selezionato Film",Toast.LENGTH_SHORT).show()
         }
 
         //Azione con Libri
         binding.libri.setOnClickListener {
+            var intent= Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://www.mondadori.it/ultimi-libri-usciti/"))
+            startActivity(intent)
             Toast.makeText(this,"Hai selezionato Libri",Toast.LENGTH_SHORT).show()
         }
 
         //Azione Musica
         binding.musica.setOnClickListener {
+            var intent=(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://www.earone.it/radio_date/")))
+            startActivity(intent)
             Toast.makeText(this,"Hai selezionato Musica",Toast.LENGTH_SHORT).show()
         }
 
@@ -74,9 +89,8 @@ class HomePage : AppCompatActivity() {
 
     }
 
-    private fun visualizzaFilm() {
 
-    }
+
 
     private fun checkUser() {
         //Controlla che l'utente sia connesso

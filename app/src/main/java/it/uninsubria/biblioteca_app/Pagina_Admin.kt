@@ -96,10 +96,10 @@ class Pagina_Admin : AppCompatActivity() {
         }
 
         else{
-            var modello = Database_Inserimento(nome,data,tipologia,casa_produttrice )
+            var model = Database_Inserimento(nome,data,tipologia,casa_produttrice )
             var id = myRef.push().key
              //Invio dati
-            myRef.child(id!!).setValue(modello)
+            myRef.child(id!!).setValue(model)
             Toast.makeText(this,"Dati aggiunti al database",Toast.LENGTH_SHORT).show()
 
         }

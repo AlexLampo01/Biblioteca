@@ -57,7 +57,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:textColorHint="@color/black"
-                android:hint="Cerca Film,Libri,Musica....."
+                android:hint="Cerca Libri"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:paddingStart="15dp"
@@ -130,6 +130,8 @@
                 android:padding="5dp"
                 android:src="@drawable/percorso_lettura"
                 app:layout_constraintTop_toBottomOf="@+id/musica" />
+
+
         </LinearLayout>
     </ScrollView>
 

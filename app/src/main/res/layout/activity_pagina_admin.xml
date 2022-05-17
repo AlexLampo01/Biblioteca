@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registra"
-        android:layout_below="@+id/CasaTil"
+        android:layout_below="@+id/scrollview"
         android:layout_marginTop="10dp"/>
 
 
@@ -29,81 +29,104 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/NomeTil"
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/prova_sfondo"
+        android:scrollbarStyle="outsideInset"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        >
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
 
-        <EditText
-            android:id="@+id/NomeEt"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Inserisci Nome del libro/film/musica"
-            android:inputType="text"/>
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/NomeTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+                <EditText
+                    android:id="@+id/NomeEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Inserisci Nome del libro"
+                    android:inputType="text" />
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/DataTil"
-        android:layout_below="@+id/NomeTil"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/NomeTil"
-        >
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/DataTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/NomeTil"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/NomeTil">
 
-        <EditText
-            android:id="@+id/DataEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Inserisci anno di produzione"
-            android:maxLength="4"
-            android:inputType="date"/>
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TipologiaTil"
-        android:layout_below="@+id/DataTil"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/DataTil"
-        >
-
-        <EditText
-            android:id="@+id/TipologiaEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Inserisci Tipologia es. (Film,Libro o Musica)"
-            android:inputType="text"/>
+                <EditText
+                    android:id="@+id/DataEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Inserisci anno di produzione"
+                    android:inputType="date"
+                    android:maxLength="4" />
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/CasaTil"
-        android:layout_below="@+id/TipologiaTil"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/TipologiaTil"
-        >
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TipologiaTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/DataTil"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/DataTil">
 
-        <EditText
-            android:id="@+id/CasaEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Inserisci casa produttrice o editore o produttore"
-            android:inputType="text"/>
+                <EditText
+                    android:id="@+id/TipologiaEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Inserisci Tipologia es. (Film,Libro o Musica)"
+                    android:inputType="text" />
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/CasaTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TipologiaTil"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/TipologiaTil">
+
+                <EditText
+                    android:id="@+id/CasaEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Inserisci editore"
+                    android:inputType="text" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/Inserisci_immagine"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="10dp"
+                android:layout_below = "@+id/CasaTil"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toBottomOf="@+id/CasaTil"/>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
