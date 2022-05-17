@@ -61,7 +61,8 @@
             android:id="@+id/DataEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Inserisci data di produzione"
+            android:hint="Inserisci anno di produzione"
+            android:maxLength="4"
             android:inputType="date"/>
 
 
