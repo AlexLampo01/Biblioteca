@@ -19,6 +19,7 @@
             android:screenOrientation="portrait"/>
 
 
+
         <activity
             android:name=".Pagina_Registrazione"
             android:screenOrientation="portrait" />

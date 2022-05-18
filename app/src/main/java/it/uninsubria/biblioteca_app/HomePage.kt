@@ -1,10 +1,13 @@
 package it.uninsubria.biblioteca_app
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.webkit.WebViewClient
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
@@ -13,6 +16,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import it.uninsubria.biblioteca_app.databinding.ActivityHomePageBinding
 import it.uninsubria.biblioteca_app.Pagina_Admin
+import it.uninsubria.biblioteca_app.databinding.SchermataDatabaseBinding
 import java.net.URI
 import android.net.Uri as Uri1
 
@@ -20,9 +24,11 @@ import android.net.Uri as Uri1
 class HomePage : AppCompatActivity() {
     //ViewBinding
     private lateinit var binding: ActivityHomePageBinding
+    private lateinit var binding_aggiorna : SchermataDatabaseBinding
 
     //ActionBar
     private lateinit var actionBar: ActionBar
+
 
     //FireBaseAuth
     private lateinit var firebaseAuth: FirebaseAuth
@@ -87,9 +93,64 @@ class HomePage : AppCompatActivity() {
             Toast.makeText(this,"Hai selezionato percorso di lettura",Toast.LENGTH_SHORT).show()
         }
 
+        //Cerca i libri nel database
+        binding.cerca.setOnClickListener {
+            val cerca_libri : String = binding.cercalibri.text.toString()
+            if(cerca_libri.isEmpty()){
+                binding.cercalibri.error = "Inserisci il nome del libro"
+            }else{
+
+                LeggiLibri(cerca_libri)
+            }
+        }
+        //Aggiorna stato prenotazione
+        binding_aggiorna.prenotaLibro.setOnClickListener {
+            aggiornaStatoPrenotazione()
+        }
+
     }
 
+    private fun aggiornaStatoPrenotazione() {
 
+    }
+
+    private fun LeggiLibri(cercaLibri: String) {
+        myRef = FirebaseDatabase.getInstance().getReference("Libri")
+        myRef.child(cercaLibri).get().addOnSuccessListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Ecco la tua ricerca")
+            val view = layoutInflater.inflate(R.layout.schermata_database, null)
+
+            if (it.exists()) {
+                val nome = it.child("nome").value
+                val data = it.child("data").value
+                val tipologia = it.child("tipologia").value
+                val scrittore = it.child("scrittore").value
+                var nome_libro= view.findViewById<TextView>(R.id.nome_libro)
+                var data_libro= view.findViewById<TextView>(R.id.data_libro)
+                var tipologia_libro= view.findViewById<TextView>(R.id.Tipologia_libro)
+                var scrittore_libro= view.findViewById<TextView>(R.id.Scrittore_libro)
+                nome_libro.setText("Nome del Libro: "+nome.toString())
+                data_libro.setText("Data di scrittura: "+data.toString().trim())
+                tipologia_libro.setText("Tipologia del libro: "+tipologia.toString().trim())
+                scrittore_libro.setText("Scrittore: "+scrittore.toString().trim())
+                builder.setView(view)
+                builder.show()
+                Toast.makeText(this, "Il libro che hai cercato è presente", Toast.LENGTH_SHORT).show()
+
+
+
+
+            } else {
+                Toast.makeText(this, "Il libro cercato non è disponibile!", Toast.LENGTH_SHORT).show()
+            }
+        }
+            .addOnFailureListener {
+                Toast.makeText(this, "Ricerca fallita!", Toast.LENGTH_SHORT).show()
+            }
+
+
+    }
 
 
     private fun checkUser() {
@@ -98,7 +159,7 @@ class HomePage : AppCompatActivity() {
         if(firebaseUser != null){
             //Utente collegato
             val email = firebaseUser.email
-            //set to text view
+            //Permette di vedere l'email con cui si ha l'accesso
             binding.emailTv.text = "Ciao ${email}"
 
         }else{

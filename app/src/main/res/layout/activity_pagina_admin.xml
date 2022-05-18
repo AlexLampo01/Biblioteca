@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registra"
-        android:layout_below="@+id/scrollview"
+        android:layout_below="@+id/ScrittoreTil"
         android:layout_marginTop="10dp"/>
 
 
@@ -29,22 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <ScrollView
-        android:id="@+id/scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/prova_sfondo"
-        android:scrollbarStyle="outsideInset"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/NomeTil"
@@ -102,7 +87,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/CasaTil"
+                android:id="@+id/ScrittoreTil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TipologiaTil"
@@ -110,23 +95,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/TipologiaTil">
 
                 <EditText
-                    android:id="@+id/CasaEt"
+                    android:id="@+id/ScrittoreEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Inserisci editore"
+                    android:hint="Inserisci Scrittore"
                     android:inputType="text" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
-            <ImageView
-                android:id="@+id/Inserisci_immagine"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_marginTop="10dp"
-                android:layout_below = "@+id/CasaTil"
-                android:scaleType="centerCrop"
-                app:layout_constraintTop_toBottomOf="@+id/CasaTil"/>
-        </LinearLayout>
-    </ScrollView>
+
+
 
 </RelativeLayout>

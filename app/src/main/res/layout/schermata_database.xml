@@ -2,47 +2,64 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/prova_sfondo">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/prova_sfondo">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
-                android:id="@+id/nome"
+                android:id="@+id/nome_libro"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="@string/app_name"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/data"
+                android:id="@+id/data_libro"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="@string/app_name"
-                android:textColor="@color/design_default_color_primary" />
-
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
             <TextView
-                android:id="@+id/casa"
+                android:id="@+id/Tipologia_libro"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="@string/app_name"
-                android:textColor="@color/design_default_color_secondary" />
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
+
+
+
+            <TextView
+                android:id="@+id/Scrittore_libro"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
+
+
+            <Button
+                android:id="@+id/prenota_libro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Prenota Ora!"/>
+
         </LinearLayout>
-    </ScrollView>
+
+
 
 
 </RelativeLayout>
