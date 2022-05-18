@@ -1,11 +1,13 @@
 package it.uninsubria.biblioteca_app
 
 import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.webkit.WebViewClient
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -24,7 +26,8 @@ import android.net.Uri as Uri1
 class HomePage : AppCompatActivity() {
     //ViewBinding
     private lateinit var binding: ActivityHomePageBinding
-    private lateinit var binding_aggiorna : SchermataDatabaseBinding
+    private lateinit var binding_aggiorna: SchermataDatabaseBinding
+
 
     //ActionBar
     private lateinit var actionBar: ActionBar
@@ -38,9 +41,17 @@ class HomePage : AppCompatActivity() {
     private lateinit var myRef:DatabaseReference
 
 
+
+
+
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomePageBinding.inflate(layoutInflater)
+        binding_aggiorna = SchermataDatabaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //Configurazione ActionBar
@@ -102,17 +113,38 @@ class HomePage : AppCompatActivity() {
 
                 LeggiLibri(cerca_libri)
             }
+
         }
-        //Aggiorna stato prenotazione
-        binding_aggiorna.prenotaLibro.setOnClickListener {
-            aggiornaStatoPrenotazione()
+
+
+    }
+
+
+
+    private fun updateData(nome: String, data: String, tipologia: String, scrittore: String,possibile_prenotazione :String , stato_prenotazione: String) {
+        //Controlla che l'utente sia connesso
+
+
+
+
+
+        val libri = mapOf<String,String>(
+            "nome" to nome,
+            "data" to data,
+            "tipologia" to tipologia,
+            "scrittore" to scrittore,
+            "possibile_prenotazione" to possibile_prenotazione,
+            "stato_prenotazione" to stato_prenotazione
+        )
+        myRef.child(nome).updateChildren(libri).addOnSuccessListener {
+            Toast.makeText(this, "Libro Prenotato",Toast.LENGTH_SHORT).show()
+
+        }.addOnFailureListener {
+            Toast.makeText(this, "Prenotazione Fallita",Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    private fun aggiornaStatoPrenotazione() {
-
-    }
 
     private fun LeggiLibri(cercaLibri: String) {
         myRef = FirebaseDatabase.getInstance().getReference("Libri")
@@ -126,6 +158,7 @@ class HomePage : AppCompatActivity() {
                 val data = it.child("data").value
                 val tipologia = it.child("tipologia").value
                 val scrittore = it.child("scrittore").value
+                val prenotazione = it.child("stato_prenotazione").value
                 var nome_libro= view.findViewById<TextView>(R.id.nome_libro)
                 var data_libro= view.findViewById<TextView>(R.id.data_libro)
                 var tipologia_libro= view.findViewById<TextView>(R.id.Tipologia_libro)
@@ -135,7 +168,27 @@ class HomePage : AppCompatActivity() {
                 tipologia_libro.setText("Tipologia del libro: "+tipologia.toString().trim())
                 scrittore_libro.setText("Scrittore: "+scrittore.toString().trim())
                 builder.setView(view)
+                builder.setPositiveButton("Prenota Libro", DialogInterface.OnClickListener { _ , _ ->
+
+                    val firebaseUser = firebaseAuth.currentUser
+                    val email = firebaseUser?.email
+                    val statoPrenotazione = "Non Disponibile"
+
+                    if (prenotazione.toString() == "Disponibile") {
+                        updateData(
+                            nome as String,
+                            data as String,
+                            tipologia as String,
+                            scrittore as String,
+                            email.toString(),
+                            statoPrenotazione
+                        )
+                    }else{
+                        Toast.makeText(this,"Il libro che vuoi prenotare non è disponibile al momento!",Toast.LENGTH_SHORT).show()
+                    }
+                })
                 builder.show()
+
                 Toast.makeText(this, "Il libro che hai cercato è presente", Toast.LENGTH_SHORT).show()
 
 

@@ -34,7 +34,8 @@ class Pagina_Admin : AppCompatActivity() {
     private var nome = ""
     private var data = ""
     private var tipologia = ""
-    private var casa_produttrice = ""
+    private var scrittore = ""
+    private var possibile_prenotazione = ""
     private var stato_prenotazione = ""
 
     val ImageBack = 1
@@ -72,7 +73,8 @@ class Pagina_Admin : AppCompatActivity() {
         nome = binding.NomeEt.text.toString().trim()
         data = binding.DataEt.text.toString().trim()
         tipologia = binding.TipologiaEt.text.toString().trim()
-        casa_produttrice = binding.ScrittoreEt.text.toString().trim()
+        scrittore = binding.ScrittoreEt.text.toString().trim()
+        possibile_prenotazione = "Null"
         stato_prenotazione = "Disponibile"
         //Configurazione RealTime Database Firebase per Film
 
@@ -92,14 +94,14 @@ class Pagina_Admin : AppCompatActivity() {
             //Nessuna tipologia immessa
             binding.TipologiaEt.error = "Inserisci la Tipologia"
         }
-        else if(TextUtils.isEmpty(casa_produttrice)){
-            //Nessuna Casa immessa
-            binding.ScrittoreEt.error = "Inserisci la Casa"
+        else if(TextUtils.isEmpty(scrittore)){
+            //Nessuno scrittore immesso
+            binding.ScrittoreEt.error = "Inserisci lo Scrittore"
         }
 
         else{
 
-            var model = Database_Inserimento(nome,data,tipologia,casa_produttrice,stato_prenotazione)
+            var model = Database_Inserimento(nome,data,tipologia,scrittore,stato_prenotazione)
 
             var id = myRef.push().key
              //Invio dati
