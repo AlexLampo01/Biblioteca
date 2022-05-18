@@ -10,6 +10,8 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import it.uninsubria.biblioteca_app.databinding.ActivityPaginaRegistrazioneBinding
 
 class Pagina_Registrazione : AppCompatActivity() {
@@ -24,6 +26,10 @@ class Pagina_Registrazione : AppCompatActivity() {
 
     //FireBase Autenticazione
     private lateinit var firebaseAuth:FirebaseAuth
+
+    //Firebase RealTime Database
+    private lateinit var database:FirebaseDatabase
+    private lateinit var myRef: DatabaseReference
     //Email e Password
     private var email = ""
     private var password = ""
@@ -71,8 +77,46 @@ class Pagina_Registrazione : AppCompatActivity() {
             } else if (password.length < 6) {
                 binding.passwordEt.error = "La password deve avere almeno 6 caratteri"
             } else {
+                inserimentofirebaserealtime()
                 firebaseRegistrazione()
             }
+        }
+    }
+
+    private fun inserimentofirebaserealtime() {
+        //Inserimento dati utente nel database
+         val nome = binding.nomeEt.text.toString().trim()
+         val data = binding.dataEt.text.toString().trim()
+         val email = binding.emailEt.text.toString().trim()
+         val password = binding.passwordEt.text.toString().trim()
+         val username = binding.usernameEt.text.toString().trim()
+         //Configurazione RealTime Database Firebase per Film
+
+        //Configurazione RealTime Database Firebase per Libri
+        database = FirebaseDatabase.getInstance("https://biblioteca-70e70-default-rtdb.firebaseio.com/")
+        myRef = database.getReference("Utenti")
+
+        if(TextUtils.isEmpty(nome)){
+            //Nessun Nome immesso
+            binding.nomeEt.error = "Inserisci Nome"
+        }
+        else if(TextUtils.isEmpty(data)){
+            //Nessuna data immessa
+            binding.dataEt.error = "Inserisci la Data"
+        }
+        else if(TextUtils.isEmpty(username)){
+            //Nessun username immesso
+            binding.usernameEt.error = "Inserisci Username"
+        }
+        else{
+
+            var model = Database_Utenti(nome,data,username,email,password)
+
+            var id = myRef.push().key
+            //Invio dati
+            myRef.child(nome!!).setValue(model)
+            Toast.makeText(this,"Dati aggiunti al database",Toast.LENGTH_SHORT).show()
+
         }
     }
 
