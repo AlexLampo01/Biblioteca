@@ -29,8 +29,7 @@ import android.net.Uri as Uri1
 class HomePage : AppCompatActivity() {
     //ViewBinding
     private lateinit var binding: ActivityHomePageBinding
-    private lateinit var binding_aggiorna: SchermataDatabaseBinding
-    private lateinit var binding_pagina_registrazione: ActivityPaginaRegistrazioneBinding
+
 
 
     //ActionBar
@@ -48,6 +47,7 @@ class HomePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomePageBinding.inflate(layoutInflater)
+        myRef = FirebaseDatabase.getInstance().getReference("Utenti")
 
 
         setContentView(binding.root)
@@ -60,9 +60,7 @@ class HomePage : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        //Configurazione Firebase RealTime Database Film
-        database = FirebaseDatabase.getInstance()
-        myRef = database.getReference("Film")
+
 
 
         //Pulsante di uscita
@@ -133,6 +131,7 @@ class HomePage : AppCompatActivity() {
         val id = item.itemId
 
         if(id == R.id.profilo){
+            startActivity(Intent(this,Profilo_utente::class.java))
             return true
         }
         if(id == R.id.I_miei_Prestiti){
@@ -247,8 +246,35 @@ class HomePage : AppCompatActivity() {
         if (firebaseUser != null) {
             //Utente collegato
             val email = firebaseUser.email
-            //Permette di vedere l'email con cui si ha l'accesso
-            binding.emailTv.text = "Ciao ${email}"
+            //Permette di vedere Username con cui si ha l'accesso
+            var leggiDati = object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+
+                    for (i in p0.children) {
+                        var nome_utente = i.child("nome").getValue()
+                        var data_utente = i.child("data").getValue()
+                        var username_utente = i.child("username").getValue()
+                        var email_utente = i.child("email").getValue()
+
+                        if (email_utente.toString().equals(email)) {
+                            binding.emailTv.setText("Ciao: "+username_utente.toString())
+
+
+
+                        }
+
+                    }
+                }
+
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+
+            }
+            myRef.addValueEventListener(leggiDati)
+            myRef.addListenerForSingleValueEvent(leggiDati)
 
         } else {
             //Utente non collegato
