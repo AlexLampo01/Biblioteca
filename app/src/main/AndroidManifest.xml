@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="it.uninsubria.biblioteca_app">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,14 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Biblioteca_App">
         <activity
+            android:name=".I_Miei_Ordini"
+            android:exported="false" />
+        <activity
+            android:name=".Profilo_utente"
+            android:exported="false" />
+        <activity
             android:name=".Pagina_Admin"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HomePage"
-            android:screenOrientation="portrait"/>
-
-
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Pagina_Registrazione"
             android:screenOrientation="portrait" />

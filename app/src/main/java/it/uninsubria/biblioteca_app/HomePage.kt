@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.EditText
@@ -46,8 +48,8 @@ class HomePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomePageBinding.inflate(layoutInflater)
-        binding_aggiorna = SchermataDatabaseBinding.inflate(layoutInflater)
-        binding_pagina_registrazione = ActivityPaginaRegistrazioneBinding.inflate(layoutInflater)
+
+
         setContentView(binding.root)
 
         //Configurazione ActionBar
@@ -120,6 +122,29 @@ class HomePage : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navizazione_utente, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if(id == R.id.profilo){
+            return true
+        }
+        if(id == R.id.I_miei_Prestiti){
+            return true
+        }
+        if(id == R.id.logout){
+            return true
+        }
+
+
+
+        return super.onOptionsItemSelected(item)
     }
 
 

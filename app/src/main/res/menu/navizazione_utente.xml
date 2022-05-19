@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/profilo"
+        android:title="Profilo"
+        style = "@style/TextAppearance.MaterialComponents.Body1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"/>
+    <item
+        android:id="@+id/I_miei_Prestiti"
+        android:title= ""
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"/>
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:iconTint="@color/design_default_color_error"
+        android:layout_marginTop="10dp"/>
+
+</menu>
