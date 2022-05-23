@@ -29,6 +29,49 @@ class Profilo_utente : AppCompatActivity() {
         setContentView(binding_utente.root)
         firebaseAuth = FirebaseAuth.getInstance()
         cerca_email()
+        binding_utente.cancellaAccount.setOnClickListener {
+            cancellaUtente()
+        }
+    }
+
+    private fun cancellaUtente() {
+        val firebaseUser = firebaseAuth.currentUser
+        val email = firebaseUser?.email.toString()
+        var leggiDati = object : ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+
+                for (i in p0.children) {
+                    var nome_utente = i.child("nome").getValue()
+                    var data_utente = i.child("data").getValue()
+                    var username_utente = i.child("username").getValue()
+                    var email_utente = i.child("email").getValue()
+
+                    if (email_utente.toString().equals(email)) {
+                        myRef = FirebaseDatabase.getInstance().getReference("Utenti")
+                        firebaseUser?.delete()
+                        myRef.child(nome_utente.toString()).removeValue().addOnSuccessListener {
+                            Toast.makeText(this@Profilo_utente,"Utente eliminato correttamente",Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@Profilo_utente, Pagina_Login::class.java))
+                        }.addOnFailureListener {
+                            Toast.makeText(this@Profilo_utente,"Eliminazione fallita!",Toast.LENGTH_SHORT).show()
+                        }
+
+
+                    }
+
+                }
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+
+        }
+        myRef.addValueEventListener(leggiDati)
+        myRef.addListenerForSingleValueEvent(leggiDati)
+
     }
 
     private fun cerca_email() {
@@ -65,6 +108,7 @@ class Profilo_utente : AppCompatActivity() {
         myRef.addValueEventListener(leggiDati)
         myRef.addListenerForSingleValueEvent(leggiDati)
     }
+
 
 
 

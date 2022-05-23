@@ -33,8 +33,9 @@ class Pagina_Admin : AppCompatActivity() {
 
     private var nome = ""
     private var data = ""
-    private var tipologia = ""
+    private var genere = ""
     private var scrittore = ""
+    private var sottogenere = ""
     private var possibile_prenotazione = ""
     private var stato_prenotazione = ""
 
@@ -72,8 +73,9 @@ class Pagina_Admin : AppCompatActivity() {
     private fun insierisciDati() {
         nome = binding.NomeEt.text.toString().trim()
         data = binding.DataEt.text.toString().trim()
-        tipologia = binding.TipologiaEt.text.toString().trim()
+        genere = binding.TipologiaEt.text.toString().trim()
         scrittore = binding.ScrittoreEt.text.toString().trim()
+        sottogenere = binding.SottoGenereEt.text.toString().trim()
         possibile_prenotazione = "Null"
         stato_prenotazione = "Disponibile"
         //Configurazione RealTime Database Firebase per Film
@@ -90,9 +92,13 @@ class Pagina_Admin : AppCompatActivity() {
             //Nessuna data immessa
             binding.DataEt.error = "Inserisci la Data"
         }
-        else if(TextUtils.isEmpty(tipologia)){
+        else if(TextUtils.isEmpty(genere)){
             //Nessuna tipologia immessa
-            binding.TipologiaEt.error = "Inserisci la Tipologia"
+            binding.TipologiaEt.error = "Inserisci il Genere"
+        }
+        else if(TextUtils.isEmpty(sottogenere)){
+            //Nessuna sottogenere immessa
+            binding.TipologiaEt.error = "Inserisci il Sottogenere"
         }
         else if(TextUtils.isEmpty(scrittore)){
             //Nessuno scrittore immesso
@@ -101,7 +107,7 @@ class Pagina_Admin : AppCompatActivity() {
 
         else{
 
-            var model = Database_Inserimento(nome,data,tipologia,scrittore,stato_prenotazione)
+            var model = Database_Inserimento(nome,data,genere,sottogenere,scrittore,stato_prenotazione)
 
             var id = myRef.push().key
              //Invio dati

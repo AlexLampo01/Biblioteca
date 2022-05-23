@@ -13,11 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Biblioteca_App">
         <activity
-            android:name=".I_Miei_Ordini"
+            android:name=".Schermata_Percorsi_Lettura"
             android:exported="false" />
         <activity
+            android:name=".Pagina_Percorsi_Lettura"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity_lista_prestiti" />
+        <activity
             android:name=".Profilo_utente"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Pagina_Admin"
             android:screenOrientation="portrait" />

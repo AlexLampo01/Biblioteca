@@ -1,25 +1,22 @@
 package it.uninsubria.biblioteca_app
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class I_Miei_Ordini(private val libri_in_prestito: ArrayList<Database_libri>): RecyclerView.Adapter<I_Miei_Ordini.ViewHolder>()  {
-
-
+class Percorsi_Lettura(private val percorsi_Lettura: ArrayList<Database_libri>): RecyclerView.Adapter<Percorsi_Lettura.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_imiei_ordini, parent, false)
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.schermata_percorsi, parent, false)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentItem = libri_in_prestito[position]
+        val currentItem = percorsi_Lettura[position]
 
         holder.itemNome.text = currentItem.nome
         holder.itemScrittore.text = currentItem.scrittore
@@ -30,25 +27,13 @@ class I_Miei_Ordini(private val libri_in_prestito: ArrayList<Database_libri>): R
     }
 
     override fun getItemCount(): Int {
-            return libri_in_prestito.size
+        return percorsi_Lettura.size
     }
 
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemNome: TextView = itemView.findViewById(R.id.nome_libro_utente)
         var itemData: TextView = itemView.findViewById(R.id.data_libro_utente)
         var itemTipologia: TextView = itemView.findViewById(R.id.tipologia_libro_utente)
         var itemScrittore: TextView = itemView.findViewById(R.id.scrittore_libro_utente)
-        var itemRendi: Button =  itemView.findViewById(R.id.Rendi_il_libro)
-
-
-
-
-
-
     }
-
-
-
-
-
 }

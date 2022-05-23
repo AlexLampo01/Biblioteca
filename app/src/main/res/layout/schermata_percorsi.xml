@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".I_Miei_Ordini">
+    tools:context=".Percorsi_Lettura">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,25 +39,12 @@
             android:textColor="@color/black"
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_marginTop="10dp"/>
-        <TextView
-            android:id="@+id/stato_libro_utente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:layout_marginTop="10dp"/>
-        <Button
-            android:id="@+id/Rendi_il_libro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:text="Rendi libro"
-            />
 
 
 
 
-</LinearLayout>
+
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -11,7 +11,7 @@
         android:layout_marginTop="10dp"/>
     <item
         android:id="@+id/I_miei_Prestiti"
-        android:title= ""
+        android:title= "I Miei Prestiti"
         style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

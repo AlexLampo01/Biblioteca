@@ -5,25 +5,14 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.webkit.WebViewClient
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import it.uninsubria.biblioteca_app.databinding.ActivityHomePageBinding
-import it.uninsubria.biblioteca_app.Pagina_Admin
-import it.uninsubria.biblioteca_app.databinding.ActivityPaginaRegistrazioneBinding
-import it.uninsubria.biblioteca_app.databinding.SchermataDatabaseBinding
-import java.net.URI
-import android.net.Uri as Uri1
 
 
 class HomePage : AppCompatActivity() {
@@ -63,11 +52,7 @@ class HomePage : AppCompatActivity() {
 
 
 
-        //Pulsante di uscita
-        binding.Esci.setOnClickListener {
-            firebaseAuth.signOut()
-            checkUser()
-        }
+
 
         //Azione con Film
         binding.film.setOnClickListener {
@@ -104,6 +89,7 @@ class HomePage : AppCompatActivity() {
 
         //Azione Percorso Lettura
         binding.percorsoLettura.setOnClickListener {
+            startActivity(Intent (this, Pagina_Percorsi_Lettura::class.java))
             Toast.makeText(this, "Hai selezionato percorso di lettura", Toast.LENGTH_SHORT).show()
         }
 
@@ -123,7 +109,7 @@ class HomePage : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.navizazione_utente, menu)
+        menuInflater.inflate(R.menu.navigazione_utente, menu)
         return true
     }
 
@@ -135,9 +121,12 @@ class HomePage : AppCompatActivity() {
             return true
         }
         if(id == R.id.I_miei_Prestiti){
+            startActivity(Intent(this,Activity_lista_prestiti::class.java))
             return true
         }
         if(id == R.id.logout){
+            firebaseAuth.signOut()
+            checkUser()
             return true
         }
 

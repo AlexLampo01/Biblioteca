@@ -80,7 +80,24 @@
                     android:id="@+id/TipologiaEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Inserisci Tipologia es. (Romanzo,Monologo...)"
+                    android:hint="Inserisci Genere es. (Romanzo,Monologo...)"
+                    android:inputType="text" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/SottoGenereTil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TipologiaTil"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/TipologiaTil">
+
+                <EditText
+                    android:id="@+id/SottoGenereEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Inserisci SottoGenere "
                     android:inputType="text" />
 
 
@@ -90,9 +107,9 @@
                 android:id="@+id/ScrittoreTil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/TipologiaTil"
+                android:layout_below="@+id/SottoGenereTil"
                 android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/TipologiaTil">
+                app:layout_constraintTop_toBottomOf="@+id/SottoGenereTil">
 
                 <EditText
                     android:id="@+id/ScrittoreEt"
