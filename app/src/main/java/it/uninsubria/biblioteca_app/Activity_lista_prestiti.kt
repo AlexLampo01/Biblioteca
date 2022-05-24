@@ -87,13 +87,11 @@ class Activity_lista_prestiti : AppCompatActivity(), itemClickListener{
 
 
     override fun rendi(databaseLibri: Database_libri, position: Int) {
-        System.out.println(databaseLibri.nome)
         myRef = FirebaseDatabase.getInstance().getReference("Libri")
         myRef.child(databaseLibri.nome.toString()).get().addOnSuccessListener {
             if(it.exists()){
                 val nome_reso = it.child("nome").value
-                val prenotazione_reso = it.child("stato_prenotazione").value
-                val possibile_prenotazione_reso = it.child("possibile_prenotazione").value
+
 
                 if (nome_reso.toString().equals(databaseLibri.nome.toString())){
                     val reso = mapOf<String,String>(

@@ -1,7 +1,8 @@
 package it.uninsubria.biblioteca_app
 
+
+import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,7 +30,7 @@ class HomePage : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     //RealTime Database Firebase
-    private lateinit var database: FirebaseDatabase
+
     private lateinit var myRef: DatabaseReference
 
 
@@ -57,7 +58,7 @@ class HomePage : AppCompatActivity() {
         //Azione con Film
         binding.film.setOnClickListener {
             //visualizzaFilm()
-            var intent = Intent(
+            val intent = Intent(
                 Intent.ACTION_VIEW,
                 android.net.Uri.parse("https://movieplayer.it/film/ultime-uscite/")
             )
@@ -69,7 +70,7 @@ class HomePage : AppCompatActivity() {
 
         //Azione con Libri
         binding.libri.setOnClickListener {
-            var intent = Intent(
+            val intent = Intent(
                 Intent.ACTION_VIEW,
                 android.net.Uri.parse("https://www.mondadori.it/ultimi-libri-usciti/")
             )
@@ -79,7 +80,7 @@ class HomePage : AppCompatActivity() {
 
         //Azione Musica
         binding.musica.setOnClickListener {
-            var intent = (Intent(
+            val intent = (Intent(
                 Intent.ACTION_VIEW,
                 android.net.Uri.parse("https://www.earone.it/radio_date/")
             ))
@@ -138,22 +139,16 @@ class HomePage : AppCompatActivity() {
 
     private fun updateData(
         nome: String,
-        data: String,
-        tipologia: String,
-        scrittore: String,
         possibile_prenotazione: String,
-        stato_prenotazione: String
+
     ) {
         //Controlla che l'utente sia connesso
 
 
         val libri = mapOf<String, String>(
             "nome" to nome,
-            "data" to data,
-            "tipologia" to tipologia,
-            "scrittore" to scrittore,
             "possibile_prenotazione" to possibile_prenotazione,
-            "stato_prenotazione" to stato_prenotazione
+            "stato_prenotazione" to "Non Disponibile"
         )
         myRef.child(nome).updateChildren(libri).addOnSuccessListener {
             Toast.makeText(this, "Libro Prenotato", Toast.LENGTH_SHORT).show()
@@ -165,6 +160,7 @@ class HomePage : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun LeggiLibri(cercaLibri: String) {
         myRef = FirebaseDatabase.getInstance().getReference("Libri")
         myRef.child(cercaLibri).get().addOnSuccessListener {
@@ -175,32 +171,33 @@ class HomePage : AppCompatActivity() {
             if (it.exists()) {
                 val nome = it.child("nome").value
                 val data = it.child("data").value
-                val tipologia = it.child("tipologia").value
                 val scrittore = it.child("scrittore").value
+                val tipologia = it.child("tipologia").value
+                val sottogenere = it.child("sottoGenere").value
                 val prenotazione = it.child("stato_prenotazione").value
-                var nome_libro = view.findViewById<TextView>(R.id.nome_libro)
-                var data_libro = view.findViewById<TextView>(R.id.data_libro)
-                var tipologia_libro = view.findViewById<TextView>(R.id.Tipologia_libro)
-                var scrittore_libro = view.findViewById<TextView>(R.id.Scrittore_libro)
+                val nome_libro = view.findViewById<TextView>(R.id.nome_libro)
+                val data_libro = view.findViewById<TextView>(R.id.data_libro)
+                val tipologia_libro = view.findViewById<TextView>(R.id.Tipologia_libro)
+                val sottogenere_libro = view.findViewById<TextView>(R.id.SottoGenere_libro)
+                val scrittore_libro = view.findViewById<TextView>(R.id.Scrittore_libro)
+
                 nome_libro.setText("Nome del Libro: " + nome.toString())
-                data_libro.setText("Data di scrittura: " + data.toString().trim())
-                tipologia_libro.setText("Tipologia del libro: " + tipologia.toString().trim())
-                scrittore_libro.setText("Scrittore: " + scrittore.toString().trim())
+                data_libro.setText("Data del libro:   "+data.toString())
+                scrittore_libro.setText("Scrittore del libro:  "+scrittore.toString())
+                tipologia_libro.setText("Genere del libro:   "+tipologia.toString())
+                sottogenere_libro.setText("SottoGenere del libro:  "+sottogenere.toString())
                 builder.setView(view)
-                builder.setPositiveButton("Prenota Libro", DialogInterface.OnClickListener { _, _ ->
+                builder.setPositiveButton("Prenota Libro", { _, _ ->
 
                     val firebaseUser = firebaseAuth.currentUser
                     val email = firebaseUser?.email
-                    val statoPrenotazione = "Non Disponibile"
+
 
                     if (prenotazione.toString() == "Disponibile") {
                         updateData(
                             nome as String,
-                            data as String,
-                            tipologia as String,
-                            scrittore as String,
                             email.toString(),
-                            statoPrenotazione
+
                         )
                     } else {
                         Toast.makeText(
@@ -236,17 +233,18 @@ class HomePage : AppCompatActivity() {
             //Utente collegato
             val email = firebaseUser.email
             //Permette di vedere Username con cui si ha l'accesso
-            var leggiDati = object : ValueEventListener {
+            val leggiDati = object : ValueEventListener {
+
+                @SuppressLint("SetTextI18n")
                 override fun onDataChange(p0: DataSnapshot) {
 
                     for (i in p0.children) {
-                        var nome_utente = i.child("nome").getValue()
-                        var data_utente = i.child("data").getValue()
-                        var username_utente = i.child("username").getValue()
-                        var email_utente = i.child("email").getValue()
+
+                        val username_utente = i.child("username").getValue()
+                        val email_utente = i.child("email").getValue()
 
                         if (email_utente.toString().equals(email)) {
-                            binding.emailTv.setText("Ciao: "+username_utente.toString())
+                            binding.emailTv.text = "Ciao: "+username_utente.toString()
 
 
 
