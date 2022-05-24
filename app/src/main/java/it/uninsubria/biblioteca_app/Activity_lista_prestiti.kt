@@ -1,29 +1,25 @@
 package it.uninsubria.biblioteca_app
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
+import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import it.uninsubria.biblioteca_app.databinding.ActivityImieiOrdiniBinding
 import it.uninsubria.biblioteca_app.databinding.ActivityLibrilistBinding
 
-import java.nio.file.Files.find
 
-class Activity_lista_prestiti : AppCompatActivity() {
+class Activity_lista_prestiti : AppCompatActivity(), itemClickListener{
 
     private lateinit var myRef: DatabaseReference
     private lateinit var libri_in_prestito_RecycleView: RecyclerView
     private lateinit var libriArrayList: ArrayList<Database_libri>
     private lateinit var binding_libri_prestito: ActivityLibrilistBinding
+
+
 
 
 
@@ -44,6 +40,8 @@ class Activity_lista_prestiti : AppCompatActivity() {
 
         libriArrayList = arrayListOf<Database_libri>()
         prendiUtenti()
+
+
 
 
 
@@ -74,7 +72,7 @@ class Activity_lista_prestiti : AppCompatActivity() {
                             libriArrayList.add(myLibri!!)
                         }
                         libri_in_prestito_RecycleView.adapter =
-                            I_Miei_Ordini(libriArrayList)
+                            I_Miei_Ordini(libriArrayList, this@Activity_lista_prestiti)
 
                             }
                         }
@@ -85,6 +83,39 @@ class Activity_lista_prestiti : AppCompatActivity() {
             })
         }
     }
+
+
+
+    override fun rendi(databaseLibri: Database_libri, position: Int) {
+        System.out.println(databaseLibri.nome)
+        myRef = FirebaseDatabase.getInstance().getReference("Libri")
+        myRef.child(databaseLibri.nome.toString()).get().addOnSuccessListener {
+            if(it.exists()){
+                val nome_reso = it.child("nome").value
+                val prenotazione_reso = it.child("stato_prenotazione").value
+                val possibile_prenotazione_reso = it.child("possibile_prenotazione").value
+
+                if (nome_reso.toString().equals(databaseLibri.nome.toString())){
+                    val reso = mapOf<String,String>(
+                        "nome" to  nome_reso.toString(),
+                        "possibile_prenotazione" to "",
+                        "stato_prenotazione" to "Disponibile"
+                        )
+                    myRef.child(nome_reso.toString()).updateChildren(reso).addOnSuccessListener {
+                        libriArrayList.clear()
+                        prendiUtenti()
+                        Toast.makeText(this,"Reso completato!",Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(this,"Qualcosa è andato storto nel reso",Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            }
+        }
+    }
+
+
+
 }
 
 
