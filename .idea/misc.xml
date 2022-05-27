@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aless/AndroidStudioProjects/Biblioteca_App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/aless/AndroidStudioProjects/Biblioteca_App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/aless/AndroidStudioProjects/Biblioteca_App/app/src/main/res/drawable/rettangolo_per_ricerca.xml" value="0.1" />
         <entry key="..\:/Users/aless/AndroidStudioProjects/Biblioteca_App/app/src/main/res/drawable/sfondo_ricerca.xml" value="0.1" />
         <entry key="..\:/Users/aless/AndroidStudioProjects/Biblioteca_App/app/src/main/res/drawable/sfondo_testa.xml" value="0.1" />

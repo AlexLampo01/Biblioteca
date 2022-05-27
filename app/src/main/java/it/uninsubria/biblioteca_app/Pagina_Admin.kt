@@ -11,8 +11,7 @@ import androidx.appcompat.app.ActionBar
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import it.uninsubria.biblioteca_app.databinding.ActivityPaginaAdminBinding
-import it.uninsubria.biblioteca_app.databinding.ActivityPaginaRegistrazioneBinding
-import java.net.URI
+
 
 class Pagina_Admin : AppCompatActivity() {
     //View Binding
@@ -119,6 +118,8 @@ class Pagina_Admin : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()//Torna indietro alla pagina di Login, quando premi il bottone dell'actionbar
+        startActivity(Intent(this,Pagina_Login::class.java))
         return super.onSupportNavigateUp()
+
     }
 }

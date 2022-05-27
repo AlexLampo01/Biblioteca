@@ -1,10 +1,17 @@
 package it.uninsubria.biblioteca_app
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +25,7 @@ class Activity_lista_prestiti : AppCompatActivity(), itemClickListener{
     private lateinit var libri_in_prestito_RecycleView: RecyclerView
     private lateinit var libriArrayList: ArrayList<Database_libri>
     private lateinit var binding_libri_prestito: ActivityLibrilistBinding
+
 
 
 
@@ -100,6 +108,9 @@ class Activity_lista_prestiti : AppCompatActivity(), itemClickListener{
                         "stato_prenotazione" to "Disponibile"
                         )
                     myRef.child(nome_reso.toString()).updateChildren(reso).addOnSuccessListener {
+
+
+
                         libriArrayList.clear()
                         prendiUtenti()
                         Toast.makeText(this,"Reso completato!",Toast.LENGTH_SHORT).show()
@@ -111,6 +122,7 @@ class Activity_lista_prestiti : AppCompatActivity(), itemClickListener{
             }
         }
     }
+
 
 
 

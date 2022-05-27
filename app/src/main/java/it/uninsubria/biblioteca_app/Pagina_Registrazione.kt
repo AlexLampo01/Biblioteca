@@ -88,11 +88,8 @@ class Pagina_Registrazione : AppCompatActivity() {
          val nome = binding.nomeEt.text.toString().trim()
          val data = binding.dataEt.text.toString().trim()
          val email = binding.emailEt.text.toString().trim()
-         val password = binding.passwordEt.text.toString().trim()
          val username = binding.usernameEt.text.toString().trim()
-         //Configurazione RealTime Database Firebase per Film
 
-        //Configurazione RealTime Database Firebase per Libri
         database = FirebaseDatabase.getInstance("https://biblioteca-70e70-default-rtdb.firebaseio.com/")
         myRef = database.getReference("Utenti")
 
@@ -110,7 +107,7 @@ class Pagina_Registrazione : AppCompatActivity() {
         }
         else{
 
-            var model = Database_Utenti(nome,data,username,email,password)
+            var model = Database_Utenti(nome,data,username,email)
 
             var id = myRef.push().key
             //Invio dati
@@ -149,5 +146,6 @@ class Pagina_Registrazione : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()//Torna indietro alla pagina di Login, quando premi il bottone dell'actionbar
         return super.onSupportNavigateUp()
+
     }
 }
