@@ -80,7 +80,7 @@ class Pagina_Admin : AppCompatActivity() {
         //Configurazione RealTime Database Firebase per Film
 
         //Configurazione RealTime Database Firebase per Libri
-                    database = FirebaseDatabase.getInstance("https://biblioteca-70e70-default-rtdb.firebaseio.com/")
+                    database = FirebaseDatabase.getInstance("https://biblioteca-database-default-rtdb.firebaseio.com/")
             myRef = database.getReference("Libri")
 
         if(TextUtils.isEmpty(nome)){
@@ -120,6 +120,6 @@ class Pagina_Admin : AppCompatActivity() {
         onBackPressed()//Torna indietro alla pagina di Login, quando premi il bottone dell'actionbar
         startActivity(Intent(this,Pagina_Login::class.java))
         return super.onSupportNavigateUp()
-
+        
     }
 }

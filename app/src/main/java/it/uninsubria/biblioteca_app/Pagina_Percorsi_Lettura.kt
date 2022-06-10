@@ -1,13 +1,10 @@
 package it.uninsubria.biblioteca_app
 
-import android.app.AlertDialog
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import it.uninsubria.biblioteca_app.databinding.ActivityPaginaPercorsiLetturaBinding
 import it.uninsubria.biblioteca_app.databinding.ActivitySchermataPercorsiLetturaBinding

@@ -4,11 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.annotation.NonNull
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import it.uninsubria.biblioteca_app.databinding.ActivityProfiloUtenteBinding
-import java.lang.StringBuilder
+
 
 
 class Profilo_utente : AppCompatActivity() {

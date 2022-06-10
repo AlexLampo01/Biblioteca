@@ -12,9 +12,7 @@
         android:roundIcon="@drawable/logo_piccolo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Biblioteca_App">
-        <activity
-            android:name=".Schermata_Percorsi_Lettura"
-            android:exported="false" />
+
         <activity
             android:name=".Pagina_Percorsi_Lettura"
             android:screenOrientation="portrait" />

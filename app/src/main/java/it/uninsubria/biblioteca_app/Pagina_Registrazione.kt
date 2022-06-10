@@ -1,7 +1,6 @@
 package it.uninsubria.biblioteca_app
 
 import androidx.appcompat.app.ActionBar
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.app.ProgressDialog
 import android.content.Intent
@@ -90,7 +89,7 @@ class Pagina_Registrazione : AppCompatActivity() {
          val email = binding.emailEt.text.toString().trim()
          val username = binding.usernameEt.text.toString().trim()
 
-        database = FirebaseDatabase.getInstance("https://biblioteca-70e70-default-rtdb.firebaseio.com/")
+        database = FirebaseDatabase.getInstance("https://biblioteca-database-default-rtdb.firebaseio.com/")
         myRef = database.getReference("Utenti")
 
         if(TextUtils.isEmpty(nome)){

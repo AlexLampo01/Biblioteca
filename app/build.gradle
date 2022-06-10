@@ -49,5 +49,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.google.firebase:firebase-messaging:23.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
 
 }
